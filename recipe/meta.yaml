@@ -1,5 +1,5 @@
 {% set name = "cesard" %}
-{% set version = "1.2.3" %}
+{% set version = "1.2.4" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 23a51175cf98bc3dfab19396a248724d1ae8e928e9461ec443d2e5612629215b
+  sha256: bd07e0288c5e556092bb0663315540144dc673eb2b81ad6405f8ed03dffe6461
 
 build:
   noarch: python
@@ -26,9 +26,9 @@ requirements:
     - geopandas
     - lxml
     - multiformats >=0.3.1
-    - numpy <2.0
+    - numpy
     - pandas
-    - pyroSAR >=0.33.1
+    - pyroSAR >=0.35.0
     - pystac >=1.8.0,<1.11.0
     - python >={{ python_min }}
     - python-dateutil
