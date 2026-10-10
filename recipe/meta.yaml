@@ -1,13 +1,13 @@
 {% set name = "cesard" %}
-{% set version = "1.3.0" %}
+{% set version = "1.4.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 0233fe7d17dc38f87af588cdbe8c4a51ef6391fdf63bb81aa62596a8a21878eb
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 66504c81d943bc7c175b6bd6bec64957419779121349e11d4c75dd043dfb6ae5
 
 build:
   noarch: python
