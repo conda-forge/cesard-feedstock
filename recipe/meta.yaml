@@ -1,5 +1,6 @@
 {% set name = "cesard" %}
 {% set version = "1.4.0" %}
+{% set python_min = "3.12" %}
 
 package:
   name: {{ name }}
@@ -16,7 +17,7 @@ build:
 
 requirements:
   host:
-    - python >=3.12
+    - python >={{ python_min }}
     - pip
     - setuptools
     - setuptools_scm
@@ -30,7 +31,7 @@ requirements:
     - pandas
     - pyroSAR >=0.39.0
     - pystac >=1.8.0,<1.11.0
-    - python >=3.12
+    - python >={{ python_min }}
     - python-dateutil
     - requests
     - scipy
@@ -42,7 +43,7 @@ test:
   commands:
     - pip check
   requires:
-    - python >=3.12
+    - python >={{ python_min }}
     - pip
 
 about:
