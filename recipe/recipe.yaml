@@ -1,23 +1,26 @@
-{% set name = "cesard" %}
-{% set version = "1.4.0" %}
-{% set python_min = "3.12" %}
+schema_version: 1
+
+context:
+  name: cesard
+  version: "1.4.0"
+  python_min: "3.12"
 
 package:
-  name: {{ name }}
-  version: {{ version }}
+  name: ${{ name }}
+  version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
   sha256: 66504c81d943bc7c175b6bd6bec64957419779121349e11d4c75dd043dfb6ae5
 
 build:
+  number: 1
   noarch: python
-  number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: ${{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
-    - python {{ python_min }}.*
+    - python ${{ python_min }}.*
     - pip
     - setuptools
     - setuptools_scm
@@ -31,32 +34,30 @@ requirements:
     - pandas
     - pyroSAR >=0.39.0
     - pystac >=1.8.0,<1.11.0
-    - python >={{ python_min }}
+    - python >=${{ python_min }}
     - python-dateutil
     - requests
     - scipy
     - spatialist >=0.20.1
 
-test:
-  imports:
-    - cesard
-  commands:
-    - pip check
-  requires:
-    - python {{ python_min }}.*
-    - pip
+tests:
+  - python:
+      imports:
+        - cesard
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
 
 about:
-  home: https://github.com/SAR-ARD/cesard
   license: MIT
-  license_family: MIT
   license_file: LICENSE.txt
   summary: Central SAR ARD Tools
-
   description: |
     Central functionalities for creating Synthetic Aperture Radar (SAR) Analysis Ready Data (ARD) products.
-  doc_url: https://cesard.readthedocs.io
-  dev_url: https://github.com/SAR-ARD/cesard
+  homepage: https://github.com/SAR-ARD/cesard
+  repository: https://github.com/SAR-ARD/cesard
+  documentation: https://cesard.readthedocs.io
 
 extra:
   recipe-maintainers:
